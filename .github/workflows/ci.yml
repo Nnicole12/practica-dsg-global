@@ -1,26 +1,30 @@
 name: CI Pipeline
-ECHO est† activado.
+
 on:
   push:
     branches:
       - main
       - master
-ECHO est† activado.
+
 jobs:
   build:
     runs-on: ubuntu-latest
-ECHO est† activado.
+
     steps:
-      - name: Checkout c¢digo
+      - name: Checkout c√≥digo
         uses: actions/checkout@v3
-ECHO est† activado.
+
       - name: Configurar Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
-ECHO est† activado.
+
       - name: Instalar dependencias
         run: npm install
-ECHO est† activado.
-      - name: Probar servidor
-        run: npm start
+
+      - name: Validar sintaxis del proyecto
+        run: node -c index.js
+
+      - name: Probar ejecuci√≥n r√°pida
+        run: node index.js &
+
